@@ -64,7 +64,7 @@
 - [x] getInstalledDepots
 - [x] getLaunchCommandLine
 - [x] getLaunchQueryParam
-- [ ] getLeaderboardDisplayType (missing in code)
+- [x] getLeaderboardDisplayType
 - [x] installDLC
 - [x] isAppInstalled
 - [x] isDLCInstalled
@@ -237,7 +237,7 @@
 - [x] submit_player_result
 
 #### Enums
-- [ ] GameSearchErrorCode
+- [x] GameSearchErrorCode
 - [x] PlayerResult
 
 ### Game Server
@@ -866,8 +866,6 @@
 - [x] reservation_notification
 
 #### Enums
-- [ ] SteamPartyBeaconLocationType (missing in code)
-- [ ] SteamPartyBeaconLocationData (missing in code)
 - [x] PartyBeaconLocationData (missing in docs)
 - [x] PartyBeaconLocationType (missing in docs)
 

@@ -17,22 +17,22 @@ public static partial class Steam
         GetInstance().Call(Methods.CreateBeacon, openSlots, locationId, (long)type, connectString, beaconMetadata);
     }
     
-    public static bool DestroyBeacon(long beaconId)
+    public static bool DestroyBeacon(ulong beaconId)
     {
         return GetInstance().Call(Methods.DestroyBeacon, beaconId).AsBool();
     }
     
-    public static Godot.Collections.Array GetAvailableBeaconLocations(long max)
+    public static Godot.Collections.Array GetAvailableBeaconLocations(uint max)
     {
         return GetInstance().Call(Methods.GetAvailableBeaconLocations, max).AsGodotArray();
     }
     
-    public static ulong GetBeaconByIndex(long index)
+    public static ulong GetBeaconByIndex(uint index)
     {
         return GetInstance().Call(Methods.GetBeaconByIndex, index).AsUInt64();
     }
     
-    public static Godot.Collections.Dictionary GetBeaconDetails(long beaconId)
+    public static Godot.Collections.Dictionary GetBeaconDetails(ulong beaconId)
     {
         return GetInstance().Call(Methods.GetBeaconDetails, beaconId).AsGodotDictionary();
     }
@@ -42,12 +42,12 @@ public static partial class Steam
         return GetInstance().Call(Methods.GetBeaconLocationData, locationId, (long)locationType, (long)locationData).AsString();
     }
     
-    public static long GetNumActiveBeacons()
+    public static uint GetNumActiveBeacons()
     {
-        return GetInstance().Call(Methods.GetNumActiveBeacons).AsInt64();
+        return GetInstance().Call(Methods.GetNumActiveBeacons).AsUInt32();
     }
     
-    public static void JoinParty(long beaconId)
+    public static void JoinParty(ulong beaconId)
     {
         GetInstance().Call(Methods.JoinParty, beaconId);
     }

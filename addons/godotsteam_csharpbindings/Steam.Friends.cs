@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Godot;
-using Godot.Collections;
-using Godot.NativeInterop;
 
 namespace GodotSteam;
 
@@ -64,22 +60,34 @@ public static partial class Steam
         return GetInstance().Call(Methods.GetFriendCount, (int)friendFlags).AsInt32();
     }
     
-    public static int GetFriendCountFromSource(long sourceId)
+    public static int GetFriendCountFromSource(ulong sourceId)
     {
         return GetInstance().Call(Methods.GetFriendCountFromSource, sourceId).AsInt32();
     }
     
-    public static ulong GetFriendFromSourceByIndex(ulong sourceId, long friendNumber)
+    public static ulong GetFriendFromSourceByIndex(ulong sourceId, ulong friendNumber)
     {
         return GetInstance().Call(Methods.GetFriendFromSourceByIndex, sourceId, friendNumber).AsUInt64();
     }
-    
-    public static Godot.Collections.Dictionary GetFriendGamePlayed(ulong steamId)
+
+    public static FriendGamePlayed GetFriendGamePlayed(ulong steamId)
     {
-        return GetInstance().Call(Methods.GetFriendGamePlayed, steamId).AsGodotDictionary();
+        var raw = GetInstance().Call(Methods.GetFriendGamePlayed, steamId).AsGodotDictionary();
+
+        if (!raw.ContainsKey("id"))
+            return new();
+
+        return new()
+        { 
+            AppId = raw["id"].AsUInt32(),
+            Ip = raw["ip"].AsString(),
+            GamePort = raw["game_port"].VariantType == Godot.Variant.Type.String ? (ushort)0 : raw["game_port"].AsUInt16(),
+            QueryPort = raw["query_port"].VariantType == Godot.Variant.Type.String ? (ushort)0 : raw["query_port"].AsUInt16(),
+            Lobby = raw["lobby"].VariantType == Godot.Variant.Type.String ? (ulong)0 : raw["lobby"].AsUInt64(),
+        };
     }
     
-    public static Godot.Collections.Dictionary GetFriendMessage(ulong friendId, long message)
+    public static Godot.Collections.Dictionary GetFriendMessage(ulong friendId, int message)
     {
         return GetInstance().Call(Methods.GetFriendMessage, friendId, message).AsGodotDictionary();
     }
@@ -89,7 +97,7 @@ public static partial class Steam
         return GetInstance().Call(Methods.GetFriendPersonaName, steamId).AsString();
     }
     
-    public static string GetFriendPersonaNameHistory(ulong steamId, long nameHistory)
+    public static string GetFriendPersonaNameHistory(ulong steamId, int nameHistory)
     {
         return GetInstance().Call(Methods.GetFriendPersonaNameHistory, steamId, nameHistory).AsString();
     }
@@ -134,7 +142,7 @@ public static partial class Steam
         return GetInstance().Call(Methods.GetFriendsGroupMembersCount, friendGroup).AsInt32();
     }
     
-    public static List<ulong> GetFriendsGroupMembersList(short friendGroup, long memberCount)
+    public static List<ulong> GetFriendsGroupMembersList(short friendGroup, int memberCount)
     {
         var raw = GetInstance().Call(Methods.GetFriendsGroupMembersList, friendGroup, memberCount).AsGodotArray();
         

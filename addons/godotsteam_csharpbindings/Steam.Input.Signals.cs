@@ -30,9 +30,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void InputDeviceConnectedEventHandler(long inputHandle);
+    public delegate void InputDeviceConnectedEventHandler(ulong inputHandle);
     private static event InputDeviceConnectedEventHandler InputDeviceConnectedEvent;
-    static Action<long> _inputDeviceConnectedAction = (inputHandle) =>
+    static Action<ulong> _inputDeviceConnectedAction = (inputHandle) =>
     {
         InputDeviceConnectedEvent?.Invoke(inputHandle);
     };
@@ -56,9 +56,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void InputDeviceDisconnectedEventHandler(long inputHandle);
+    public delegate void InputDeviceDisconnectedEventHandler(ulong inputHandle);
     private static event InputDeviceDisconnectedEventHandler InputDeviceDisconnectedEvent;
-    static Action<long> _inputDeviceDisconnectedAction = (inputHandle) =>
+    static Action<ulong> _inputDeviceDisconnectedAction = (inputHandle) =>
     {
         InputDeviceDisconnectedEvent?.Invoke(inputHandle);
     };
@@ -82,9 +82,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void InputConfigurationLoadedEventHandler(uint appId, long deviceHandle, Godot.Collections.Dictionary configData);
+    public delegate void InputConfigurationLoadedEventHandler(uint appId, ulong deviceHandle, Godot.Collections.Dictionary configData);
     private static event InputConfigurationLoadedEventHandler InputConfigurationLoadedEvent;
-    static Action<uint, long, Godot.Collections.Dictionary> _inputConfigurationLoadedAction = (appId, deviceHandle, configData) =>
+    static Action<uint, ulong, Godot.Collections.Dictionary> _inputConfigurationLoadedAction = (appId, deviceHandle, configData) =>
     {
         InputConfigurationLoadedEvent?.Invoke(appId, deviceHandle, configData);
     };
@@ -108,9 +108,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void InputGamepadSlotChangeEventHandler(uint appId, long deviceHandle, long deviceType, long oldGamepadSlot, long newGamepadSlot);
+    public delegate void InputGamepadSlotChangeEventHandler(uint appId, ulong deviceHandle, int deviceType, int oldGamepadSlot, int newGamepadSlot);
     private static event InputGamepadSlotChangeEventHandler InputGamepadSlotChangeEvent;
-    static Action<uint, long, long, long, long> _inputGamepadSlotChangeAction = (appId, deviceHandle, deviceType, oldGamepadSlot, newGamepadSlot) =>
+    static Action<uint, ulong, int, int, int> _inputGamepadSlotChangeAction = (appId, deviceHandle, deviceType, oldGamepadSlot, newGamepadSlot) =>
     {
         InputGamepadSlotChangeEvent?.Invoke(appId, deviceHandle, deviceType, oldGamepadSlot, newGamepadSlot);
     };

@@ -5,9 +5,9 @@ namespace GodotSteam;
 
 public static partial class Steam
 {
-    public delegate void JoinPartySignalEventHandler(long result, long beaconId, ulong steamId, string connectString);
+    public delegate void JoinPartySignalEventHandler(long result, ulong beaconId, ulong steamId, string connectString);
     private static event JoinPartySignalEventHandler JoinPartySignalEvent;
-    static Action<long, long, ulong, string> _joinPartySignalAction = (result, beaconId, steamId, connectString) =>
+    static Action<long, ulong, ulong, string> _joinPartySignalAction = (result, beaconId, steamId, connectString) =>
     {
         JoinPartySignalEvent?.Invoke(result, beaconId, steamId, connectString);
     };
@@ -33,9 +33,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void CreateBeaconSignalEventHandler(long result, long beaconId);
+    public delegate void CreateBeaconSignalEventHandler(long result, ulong beaconId);
     private static event CreateBeaconSignalEventHandler CreateBeaconSignalEvent;
-    static Action<long, long> _createBeaconSignalAction = (result, beaconId) =>
+    static Action<long, ulong> _createBeaconSignalAction = (result, beaconId) =>
     {
         CreateBeaconSignalEvent?.Invoke(result, beaconId);
     };
@@ -61,9 +61,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void ReservationNotificationEventHandler(long beaconId, ulong steamId);
+    public delegate void ReservationNotificationEventHandler(ulong beaconId, ulong steamId);
     private static event ReservationNotificationEventHandler ReservationNotificationEvent;
-    static Action<long, ulong> _reservationNotificationAction = (beaconId, steamId) =>
+    static Action<ulong, ulong> _reservationNotificationAction = (beaconId, steamId) =>
     {
         ReservationNotificationEvent?.Invoke(beaconId, steamId);
     };

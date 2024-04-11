@@ -5,9 +5,9 @@ namespace GodotSteam;
 
 public static partial class Steam
 {
-    public delegate void GlobalAchievementPercentagesReadyEventHandler(long gameId, long result);
+    public delegate void GlobalAchievementPercentagesReadyEventHandler(ulong gameId, uint result);
     private static event GlobalAchievementPercentagesReadyEventHandler GlobalAchievementPercentagesReadyEvent;
-    static Action<long, long> _globalAchievementPercentagesReadyAction = (gameId, result) =>
+    static Action<ulong, uint> _globalAchievementPercentagesReadyAction = (gameId, result) =>
     {
         GlobalAchievementPercentagesReadyEvent?.Invoke(gameId, result);
     };
@@ -31,9 +31,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void GlobalStatsReceivedEventHandler(long gameId, string result);
+    public delegate void GlobalStatsReceivedEventHandler(ulong gameId, string result);
     private static event GlobalStatsReceivedEventHandler GlobalStatsReceivedEvent;
-    static Action<long, string> _globalStatsReceivedAction = (gameId, result) =>
+    static Action<ulong, string> _globalStatsReceivedAction = (gameId, result) =>
     {
         GlobalStatsReceivedEvent?.Invoke(gameId, result);
     };
@@ -57,9 +57,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void LeaderboardFindResultEventHandler(long leaderboardHandle, long found);
+    public delegate void LeaderboardFindResultEventHandler(ulong leaderboardHandle, bool found);
     private static event LeaderboardFindResultEventHandler LeaderboardFindResultEvent;
-    static Action<long, long> _leaderboardFindResultAction = (leaderboardHandle, found) =>
+    static Action<ulong, bool> _leaderboardFindResultAction = (leaderboardHandle, found) =>
     {
         LeaderboardFindResultEvent?.Invoke(leaderboardHandle, found);
     };
@@ -135,9 +135,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void LeaderboardUgcSetEventHandler(long leaderboardHandle, string result);
+    public delegate void LeaderboardUgcSetEventHandler(ulong leaderboardHandle, string result);
     private static event LeaderboardUgcSetEventHandler LeaderboardUgcSetEvent;
-    static Action<long, string> _leaderboardUgcSetAction = (leaderboardHandle, result) =>
+    static Action<ulong, string> _leaderboardUgcSetAction = (leaderboardHandle, result) =>
     {
         LeaderboardUgcSetEvent?.Invoke(leaderboardHandle, result);
     };
@@ -161,9 +161,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void NumberOfCurrentPlayersEventHandler(long success, long players);
+    public delegate void NumberOfCurrentPlayersEventHandler(bool success, int players);
     private static event NumberOfCurrentPlayersEventHandler NumberOfCurrentPlayersEvent;
-    static Action<long, long> _numberOfCurrentPlayersAction = (success, players) =>
+    static Action<bool, int> _numberOfCurrentPlayersAction = (success, players) =>
     {
         NumberOfCurrentPlayersEvent?.Invoke(success, players);
     };
@@ -187,9 +187,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void UserAchievementStoredEventHandler(long gameId, bool groupAchieve, string achievementName, long currentProgress, long maxProgress);
+    public delegate void UserAchievementStoredEventHandler(ulong gameId, bool groupAchieve, string achievementName, uint currentProgress, uint maxProgress);
     private static event UserAchievementStoredEventHandler UserAchievementStoredEvent;
-    static Action<long, bool, string, long, long> _userAchievementStoredAction = (gameId, groupAchieve, achievementName, currentProgress, maxProgress) =>
+    static Action<ulong, bool, string, uint, uint> _userAchievementStoredAction = (gameId, groupAchieve, achievementName, currentProgress, maxProgress) =>
     {
         UserAchievementStoredEvent?.Invoke(gameId, groupAchieve, achievementName, currentProgress, maxProgress);
     };
@@ -213,9 +213,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void CurrentStatsReceivedEventHandler(long gameId, long result, long userId);
+    public delegate void CurrentStatsReceivedEventHandler(ulong gameId, uint result, ulong userId);
     private static event CurrentStatsReceivedEventHandler CurrentStatsReceivedEvent;
-    static Action<long, long, long> _currentStatsReceivedAction = (gameId, result, userId) =>
+    static Action<ulong, uint, ulong> _currentStatsReceivedAction = (gameId, result, userId) =>
     {
         CurrentStatsReceivedEvent?.Invoke(gameId, result, userId);
     };
@@ -239,9 +239,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void UserStatsReceivedEventHandler(long gameId, long result, long userId);
+    public delegate void UserStatsReceivedEventHandler(ulong gameId, uint result, ulong userId);
     private static event UserStatsReceivedEventHandler UserStatsReceivedEvent;
-    static Action<long, long, long> _userStatsReceivedAction = (gameId, result, userId) =>
+    static Action<ulong, uint, ulong> _userStatsReceivedAction = (gameId, result, userId) =>
     {
         UserStatsReceivedEvent?.Invoke(gameId, result, userId);
     };
@@ -265,9 +265,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void UserStatsStoredEventHandler(long gameId, long result);
+    public delegate void UserStatsStoredEventHandler(ulong gameId, uint result);
     private static event UserStatsStoredEventHandler UserStatsStoredEvent;
-    static Action<long, long> _userStatsStoredAction = (gameId, result) =>
+    static Action<ulong, uint> _userStatsStoredAction = (gameId, result) =>
     {
         UserStatsStoredEvent?.Invoke(gameId, result);
     };
@@ -291,9 +291,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void UserStatsUnloadedEventHandler(long userId);
+    public delegate void UserStatsUnloadedEventHandler(ulong userId);
     private static event UserStatsUnloadedEventHandler UserStatsUnloadedEvent;
-    static Action<long> _userStatsUnloadedAction = (userId) =>
+    static Action<ulong> _userStatsUnloadedAction = (userId) =>
     {
         UserStatsUnloadedEvent?.Invoke(userId);
     };

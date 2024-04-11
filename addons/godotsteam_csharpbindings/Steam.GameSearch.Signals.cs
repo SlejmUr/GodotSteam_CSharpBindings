@@ -123,9 +123,9 @@ public static partial class Steam
         }
     }
     
-    public delegate void SearchForGameProgressEventHandler(ErrorResult result, long searchId, SearchProgress searchProgress);
+    public delegate void SearchForGameProgressEventHandler(ErrorResult result, ulong searchId, SearchProgress searchProgress);
     private static event SearchForGameProgressEventHandler SearchForGameProgressEvent;
-    static Action<int, long, Godot.Collections.Dictionary> _searchForGameProgressAction = (result, searchId, searchProgress) =>
+    static Action<int, ulong, Godot.Collections.Dictionary> _searchForGameProgressAction = (result, searchId, searchProgress) =>
     {
         SearchForGameProgressEvent?.Invoke(
             (ErrorResult)result,

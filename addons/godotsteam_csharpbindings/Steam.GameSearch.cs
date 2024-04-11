@@ -3,29 +3,29 @@ namespace GodotSteam;
 public static partial class Steam
 {
     
-    public static int AddGameSearchParams(string key, string values)
+    public static GameSearchErrorCode AddGameSearchParams(string key, string values)
     {
-        return GetInstance().Call(Methods.AddGameSearchParams, key, values).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.AddGameSearchParams, key, values).AsInt32();
     }
     
-    public static int SearchForGameWithLobby(ulong lobbyId, int playerMin, int playerMax)
+    public static GameSearchErrorCode SearchForGameWithLobby(ulong lobbyId, int playerMin, int playerMax)
     {
-        return GetInstance().Call(Methods.SearchForGameWithLobby, lobbyId, playerMin, playerMax).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.SearchForGameWithLobby, lobbyId, playerMin, playerMax).AsInt32();
     }
     
-    public static int SearchForGameSolo(int playerMin, int playerMax)
+    public static GameSearchErrorCode SearchForGameSolo(int playerMin, int playerMax)
     {
-        return GetInstance().Call(Methods.SearchForGameSolo, playerMin, playerMax).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.SearchForGameSolo, playerMin, playerMax).AsInt32();
     }
     
-    public static int AcceptGame()
+    public static GameSearchErrorCode AcceptGame()
     {
-        return GetInstance().Call(Methods.AcceptGame).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.AcceptGame).AsInt32();
     }
     
-    public static int DeclineGame()
+    public static GameSearchErrorCode DeclineGame()
     {
-        return GetInstance().Call(Methods.DeclineGame).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.DeclineGame).AsInt32();
     }
     
     public static string RetrieveConnectionDetails(ulong hostId)
@@ -33,43 +33,43 @@ public static partial class Steam
         return GetInstance().Call(Methods.RetrieveConnectionDetails, hostId).AsString();
     }
     
-    public static int EndGameSearch()
+    public static GameSearchErrorCode EndGameSearch()
     {
-        return GetInstance().Call(Methods.EndGameSearch).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.EndGameSearch).AsInt32();
     }
     
-    public static int SetGameHostParams(string key, string value)
+    public static GameSearchErrorCode SetGameHostParams(string key, string value)
     {
-        return GetInstance().Call(Methods.SetGameHostParams, key, value).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.SetGameHostParams, key, value).AsInt32();
     }
     
-    public static int SetConnectionDetails(string details, int connectionDetails)
+    public static GameSearchErrorCode SetConnectionDetails(string details, int connectionDetails)
     {
-        return GetInstance().Call(Methods.SetConnectionDetails, details, connectionDetails).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.SetConnectionDetails, details, connectionDetails).AsInt32();
     }
     
-    public static int RequestPlayersForGame(int playerMin, int playerMax, int maxTeamSize)
+    public static GameSearchErrorCode RequestPlayersForGame(int playerMin, int playerMax, int maxTeamSize)
     {
-        return GetInstance().Call(Methods.RequestPlayersForGame, playerMin, playerMax, maxTeamSize).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.RequestPlayersForGame, playerMin, playerMax, maxTeamSize).AsInt32();
     }
     
-    public static int HostConfirmGameStart(ulong gameId)
+    public static GameSearchErrorCode HostConfirmGameStart(ulong gameId)
     {
-        return GetInstance().Call(Methods.HostConfirmGameStart, gameId).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.HostConfirmGameStart, gameId).AsInt32();
     }
     
-    public static int CancelRequestPlayersForGame()
+    public static GameSearchErrorCode CancelRequestPlayersForGame()
     {
-        return GetInstance().Call(Methods.CancelRequestPlayersForGame).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.CancelRequestPlayersForGame).AsInt32();
     }
     
-    public static PlayerResult SubmitPlayerResult(ulong gameId, ulong playerId, PlayerResult playerResult)
+    public static GameSearchErrorCode SubmitPlayerResult(ulong gameId, ulong playerId, PlayerResult playerResult)
     {
-        return (PlayerResult)GetInstance().Call(Methods.SubmitPlayerResult, gameId, playerId, (int)playerResult).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.SubmitPlayerResult, gameId, playerId, (int)playerResult).AsInt32();
     }
     
-    public static int EndGame(ulong gameId)
+    public static GameSearchErrorCode EndGame(ulong gameId)
     {
-        return GetInstance().Call(Methods.EndGame, gameId).AsInt32();
+        return (GameSearchErrorCode)GetInstance().Call(Methods.EndGame, gameId).AsInt32();
     }
 }

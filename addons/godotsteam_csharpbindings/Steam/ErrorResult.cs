@@ -1,6 +1,6 @@
 namespace GodotSteam;
 
-public enum ErrorResult
+public enum ErrorResult : uint
 {
     Ok = 1,
     Fail = 2,

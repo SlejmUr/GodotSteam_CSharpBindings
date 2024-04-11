@@ -5,7 +5,7 @@ namespace GodotSteam;
 
 public static partial class Steam
 {
-    public static void AttachLeaderboardUGC(ulong ugcHandle, long thisLeaderboard = 0)
+    public static void AttachLeaderboardUGC(ulong ugcHandle, ulong thisLeaderboard = 0)
     {
         GetInstance().Call(Methods.AttachLeaderboardUGC, ugcHandle, thisLeaderboard);
     }
@@ -15,12 +15,12 @@ public static partial class Steam
         return GetInstance().Call(Methods.ClearAchievement, achievementName).AsBool();
     }
     
-    public static void DownloadLeaderboardEntries(int start, int end, LeaderboardDataRequest type = 0, long thisLeaderboard = 0)
+    public static void DownloadLeaderboardEntries(int start, int end, LeaderboardDataRequest type = 0, ulong thisLeaderboard = 0)
     {
         GetInstance().Call(Methods.DownloadLeaderboardEntries, start, end, (long)type, thisLeaderboard);
     }
     
-    public static void DownloadLeaderboardEntriesForUsers(Godot.Collections.Array usersId, long thisLeaderboard = 0)
+    public static void DownloadLeaderboardEntriesForUsers(Godot.Collections.Array usersId, ulong thisLeaderboard = 0)
     {
         GetInstance().Call(Methods.DownloadLeaderboardEntriesForUsers, usersId, thisLeaderboard);
     }
@@ -60,7 +60,7 @@ public static partial class Steam
         return GetInstance().Call(Methods.GetAchievementIcon, achievementName).AsInt32();
     }
     
-    public static string GetAchievementName(long achievement)
+    public static string GetAchievementName(uint achievement)
     {
         return GetInstance().Call(Methods.GetAchievementName, achievement).AsString();
     }
@@ -95,22 +95,22 @@ public static partial class Steam
         return GetInstance().Call(Methods.GetGlobalStatFloatHistory, statName).AsDouble();
     }
     
-    public static Godot.Collections.Dictionary GetLeaderboardDisplayType(long thisLeaderboard = 0)
+    public static Godot.Collections.Dictionary GetLeaderboardDisplayType(ulong thisLeaderboard = 0)
     {
         return GetInstance().Call(Methods.GetLeaderboardDisplayType, thisLeaderboard).AsGodotDictionary();
     }
     
-    public static int GetLeaderboardEntryCount(long thisLeaderboard = 0)
+    public static int GetLeaderboardEntryCount(ulong thisLeaderboard = 0)
     {
         return GetInstance().Call(Methods.GetLeaderboardEntryCount, thisLeaderboard).AsInt32();
     }
     
-    public static string GetLeaderboardName(long thisLeaderboard = 0)
+    public static string GetLeaderboardName(ulong thisLeaderboard = 0)
     {
         return GetInstance().Call(Methods.GetLeaderboardName, thisLeaderboard).AsString();
     }
     
-    public static Godot.Collections.Dictionary GetLeaderboardSortMethod(long thisLeaderboard = 0)
+    public static Godot.Collections.Dictionary GetLeaderboardSortMethod(ulong thisLeaderboard = 0)
     {
         return GetInstance().Call(Methods.GetLeaderboardSortMethod, thisLeaderboard).AsGodotDictionary();
     }
@@ -180,7 +180,7 @@ public static partial class Steam
         GetInstance().Call(Methods.RequestGlobalAchievementPercentages);
     }
     
-    public static void RequestGlobalStats(long historyDays)
+    public static void RequestGlobalStats(int historyDays)
     {
         GetInstance().Call(Methods.RequestGlobalStats, historyDays);
     }
@@ -226,7 +226,7 @@ public static partial class Steam
     }
     
     /// <param name="details">If the parameter is null, then the default value is <c>Array.Empty&lt;int&gt;()</c>.</param>
-    public static void UploadLeaderboardScore(int score, bool keepBest = true, int[] details = null, long thisLeaderboard = 0)
+    public static void UploadLeaderboardScore(int score, bool keepBest = true, int[] details = null, ulong thisLeaderboard = 0)
     {
         var detailsOrDefVal = details ?? Array.Empty<int>();
         GetInstance().Call(Methods.UploadLeaderboardScore, score, keepBest, detailsOrDefVal, thisLeaderboard);
@@ -236,35 +236,5 @@ public static partial class Steam
     public static Godot.Collections.Array GetLeaderboardEntries()
     {
         return GetInstance().Call(Methods.GetLeaderboardEntries).AsGodotArray();
-    }
-
-    public enum LeaderboardDataRequest : long
-    {
-        Global = 0,
-        GlobalAroundUser = 1,
-        Friends = 2,
-        Users = 3
-    }
-
-    public enum LeaderboardDisplayType : long
-    {
-        None = 0,
-        Numeric = 1,
-        TimeSeconds = 2,
-        TimeMilliseconds = 3
-    }
-
-    public enum LeaderboardSortMethod : long
-    {
-        None = 0,
-        Ascending = 1,
-        Descending = 2
-    }
-
-    public enum LeaderboardUploadScoreMethod : long
-    {
-        None = 0,
-        KeepBest = 1,
-        ForceUpdate = 2
     }
 }
